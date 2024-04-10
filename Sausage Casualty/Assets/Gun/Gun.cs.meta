@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 57461d8b33464e3458e85be9cd8b0903
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gunData: {fileID: 11400000, guid: 0e1284f5960f57e4f8193e3281b1ac12, type: 2}
+  - cam: {instanceID: 0}
+  - shootPoint: {instanceID: 0}
+  - bulletTrail: {fileID: 6016512839006746263, guid: d277ffc07a00ad546ae96541817207ca, type: 3}
+  - muzzleFlash: {fileID: 7793465471204511295, guid: 3d903d2c08329424cb37e776f7dcfcff, type: 3}
+  - impactParticles: {fileID: 2749857749175741650, guid: 1058d553d72d9d44ba75225a8c8a9c02, type: 3}
+  - debugText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
