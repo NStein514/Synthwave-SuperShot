@@ -8,6 +8,7 @@ TagManager:
   - Green
   - Blue
   - Fire
+  - Bullet
   layers:
   - Default
   - TransparentFX
