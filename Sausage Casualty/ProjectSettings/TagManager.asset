@@ -9,6 +9,7 @@ TagManager:
   - Blue
   - Fire
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
