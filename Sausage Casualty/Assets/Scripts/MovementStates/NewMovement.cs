@@ -120,7 +120,7 @@ public class MovementAllOneManager : MonoBehaviour
 
     void AnimateRun(Vector3 direction){
         isRunning = (direction.x > 0.1f || direction.x < -0.1f) || (direction.z > 0.1f || direction.z < -0.1f) ? true : false;
-        anim.SetBool("isRunning", isRunning);
+        anim.SetBool("Running", isRunning);
     }
 
     private void Move()

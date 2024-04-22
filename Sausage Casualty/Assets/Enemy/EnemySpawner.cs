@@ -6,42 +6,33 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab; //The enemy prefab with set scaling and texturing 
     public Transform playerTransform;
-    public int startingEnemies = 5; //The count for the first wave of enemies
+    public int initialEnemyCount = 2; //The count for the first wave of enemies
     public float spawnRadius = 20f; //Not sure of the exact radius of arena, this will need tweaked
     public float waveCooldown = 5f; //A five second cooldown between waves
+    public float initialSpawnDelay = 0f;
+    public float spawnInterval = 20f;
+    public int enemiesPerWave = 2;
 
     private int currentWave = 1;
-    private int enemiesToSpawn;
 
     void Start()
     {
-        enemiesToSpawn = startingEnemies;
-        SpawnEnemies();
+        InvokeRepeating("SpawnEnemies", initialSpawnDelay, spawnInterval);
     }
 
-    void Update()
-    {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-        {
-            Invoke("StartNextWave", waveCooldown);
-        }
-    }
 
     void SpawnEnemies()
     {
+        int enemiesToSpawn = initialEnemyCount + (currentWave - 1) * enemiesPerWave;
+
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Vector3 randomPosition = playerTransform.position + Random.insideUnitSphere * spawnRadius;
-            randomPosition.y = 0f; //Spawning enemies at ground level 
-            GameObject enemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+            Vector3 randomOffset = Random.insideUnitCircle * spawnRadius;
+            Vector3 spawnPosition = playerTransform.position + new Vector3(randomOffset.x, 0f, randomOffset.y);
+            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             enemy.GetComponent<EnemyController>().SetTarget(playerTransform);
         }
-    }
 
-    void StartNextWave()
-    {
         currentWave++;
-        enemiesToSpawn += 2;
-        SpawnEnemies();
     }
 }

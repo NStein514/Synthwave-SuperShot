@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
             // Adjust the Y-axis position of the enemy to follow the player
-            transform.position = new Vector3(transform.position.x, transform.position.z);
+            Vector3 targetPosition = new Vector3(target.position.x, transform.position.y, transform.position.z);
 
             // Rotate the enemy in the direction of the player 
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
