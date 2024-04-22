@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class PlayerStats : MonoBehaviour
         currentHealth = maxHealth;
 
         healthBar.SetSliderMax(maxHealth);
+    }
+
+    private void Update()
+    {
+        if (currentHealth <= 0) SceneManager.LoadScene("UI test");
     }
 
     public void TakeDamage(float damage)

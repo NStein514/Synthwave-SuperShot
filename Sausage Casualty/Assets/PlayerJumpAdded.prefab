@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 3633101879874448903}
   - component: {fileID: 3313623094940910757}
   - component: {fileID: 7858586689095257349}
+  - component: {fileID: 830894325653582030}
   m_Layer: 7
   m_Name: PlayerJumpAdded
   m_TagString: Player
@@ -493,6 +494,20 @@ MonoBehaviour:
   m_DefaultActionMap: New action map
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &830894325653582030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169323298064840131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053767926598981429107496a5dae8a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthBar: {fileID: 0}
 --- !u!1 &1407168838329104646
 GameObject:
   m_ObjectHideFlags: 0
