@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     public float life = 10; 
     private Transform target;
     private float moveSpeed = 6f;
+    public float damage = 20f;
 
     void Update()
     {
@@ -38,10 +39,18 @@ public class EnemyController : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            damage = 10f;
+            other.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
+        }
     }
 
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
     }
+
 }
+
+
