@@ -4,44 +4,36 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab; //The enemy prefab with set scaling and texturing 
+    public GameObject enemyPrefab; // The enemy prefab with set scaling and texturing 
     public Transform playerTransform;
-    public int startingEnemies = 5; //The count for the first wave of enemies
-    public float spawnRadius = 20f; //Not sure of the exact radius of arena, this will need tweaked
-    public float waveCooldown = 5f; //A five second cooldown between waves
+    public float spawnRadius = 20f; // The radius within which enemies will be spawned
+    public float initialSpawnDelay = 0f; // Initial delay before spawning enemies
+    public float spawnInterval = 20f; // Time interval between enemy spawns
+    public int initialEnemyCount = 2; // Initial number of enemies to spawn
+    public int enemiesPerWave = 2; // Number of enemies added per wave
 
     private int currentWave = 1;
-    private int enemiesToSpawn;
 
     void Start()
     {
-        enemiesToSpawn = startingEnemies;
-        SpawnEnemies();
-    }
-
-    void Update()
-    {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-        {
-            Invoke("StartNextWave", waveCooldown);
-        }
+        InvokeRepeating("SpawnEnemies", initialSpawnDelay, spawnInterval);
     }
 
     void SpawnEnemies()
     {
+        // Calculate number of enemies for this wave
+        int enemiesToSpawn = initialEnemyCount + (currentWave - 1) * enemiesPerWave;
+
+        // Spawn enemies around the player within the spawn radius
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Vector3 randomPosition = playerTransform.position + Random.insideUnitSphere * spawnRadius;
-            randomPosition.y = 0f; //Spawning enemies at ground level 
-            GameObject enemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+            Vector3 randomOffset = Random.insideUnitCircle * spawnRadius;
+            Vector3 spawnPosition = playerTransform.position + new Vector3(randomOffset.x, 0f, randomOffset.y);
+            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             enemy.GetComponent<EnemyController>().SetTarget(playerTransform);
         }
-    }
 
-    void StartNextWave()
-    {
+        // Increment wave count
         currentWave++;
-        enemiesToSpawn += 2;
-        SpawnEnemies();
     }
 }
