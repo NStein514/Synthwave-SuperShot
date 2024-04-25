@@ -557,6 +557,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 2924307870146120350}
   controlsMenu: {fileID: 5694056344435150471}
+  quitButton: {fileID: 8773094235581960833}
+  menuTheme: {fileID: 0}
+  battleTheme: {fileID: 0}
 --- !u!1 &4384242339962784603
 GameObject:
   m_ObjectHideFlags: 0
