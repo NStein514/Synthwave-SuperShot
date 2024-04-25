@@ -21,14 +21,17 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        if (currentHealth <= 0) SceneManager.LoadScene("UI test");
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene("UI test");
+        }
     }
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-        Debug.Log(damage);
-        healthBar.SetSlider(currentHealth);
+        currentHealth -= damage; //Drop damage
+        //Debug.Log(damage);
+        healthBar.SetSlider(currentHealth); //Drop visible health
     }
 
 }

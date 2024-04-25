@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject controlsMenu;
+    public GameObject quitButton;
     public AudioSource menuTheme;
     public AudioSource battleTheme;
     // Start is called before the first frame update
@@ -96,6 +97,7 @@ public class MainMenu : MonoBehaviour
         else if(currentScene.name == "UI test")
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("GreyBox");
+
             Time.timeScale = 1.0f;
             //if it's the title screen, go to game scene and begin
         }
@@ -126,8 +128,10 @@ public class MainMenu : MonoBehaviour
         }
         else if (currentScene.name == "UI test")
         {
+            //Debug.Log("Attempt to quit");
             Application.Quit();
             //if it's the title scene, end application
+            //Only works in build, not in unity play
         }
     }
 }
